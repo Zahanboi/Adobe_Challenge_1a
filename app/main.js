@@ -2,8 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const extractOutline = require("./extract");
 
-const INPUT_DIR = "./app/input";
-const OUTPUT_DIR = "./app/output";
+const INPUT_DIR = "./input";
+const OUTPUT_DIR = "./output";
+
 
 (async () => {
   console.time("processing");
@@ -17,7 +18,15 @@ const OUTPUT_DIR = "./app/output";
 
     try {
       const result = await extractOutline(inputPath);
-      fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
+      // console.log(result)
+      if (result) {
+        fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
+        console.log(`Extracted outline for ${file} yyyuyuyuyu`);
+        
+      }else {
+        console.warn(`No outline found for ${file}`);
+      }
+      
       console.log(` Processed: ${file}`);
     } catch (err) {
       console.error(`Failed to process ${file}:`, err);
