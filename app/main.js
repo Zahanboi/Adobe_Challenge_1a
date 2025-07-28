@@ -21,7 +21,6 @@ const OUTPUT_DIR = "./output";
       // console.log(result)
       if (result) {
         fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
-        console.log(`Extracted outline for ${file} yyyuyuyuyu`);
         
       }else {
         console.warn(`No outline found for ${file}`);
